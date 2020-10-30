@@ -39,11 +39,11 @@ module Dhalang
     #
     # @param  [String] html          The html to get as PDF.
     # @param  [String] output_file   A file in which to store the PDF data
-    def self.get_from_html_as_file(html, output_file)
+    def self.get_from_html_as_file(html, output_file, options = {})
       html_file = FileUtils.create_temp_file("html", html)
       url = "file://" + html_file.path
       begin
-        Puppeteer.visit(url, PUPPETEER_SCRIPT_PATH, output_file.path, "pdf")
+        Puppeteer.visit(url, PUPPETEER_SCRIPT_PATH, output_file.path, "pdf", options)
       ensure
         FileUtils.delete(html_file)
       end
