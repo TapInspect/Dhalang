@@ -34,6 +34,16 @@ module Dhalang
     end
 
 
+    # Captures the full webpage under the given url as PDF
+    # Useful when creating dynamic content, for example invoices.
+    #
+    # @param  [String] url           The url to get as PDF.
+    # @param  [String] output_file   A file in which to store the PDF data
+    def self.get_from_url_as_file(url, output_file, options = {})
+      Puppeteer.visit(url, PUPPETEER_SCRIPT_PATH, output_file.path, "pdf", options)
+    end
+
+
     # Captures the full HTML as PDF
     # Useful when creating dynamic content, for example invoices.
     #
